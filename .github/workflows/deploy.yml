@@ -1,0 +1,26 @@
+name: Deploy to Xserver
+
+on:
+  push:
+    branches:
+      - main # mainブランチに保存（プッシュ）されたら自動実行
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4 # 最新のソースコードを取得
+
+      - name: Deploy via rsync
+        uses: Burnett01/rsync-deployments@7.0.0 # 差分だけを高速転送するアクション
+        with:
+          switches: -avzr --delete # 削除したファイルもサーバーに反映させる設定
+          path: ./
+          # 【重要】ここを自分のサーバー環境に合わせて書き換えてください
+          remote_path: /home/xb688956/n-material.info/public_html/
+          remote_host: ${{ secrets.xb688956.xbiz.jp }}
+          remote_user: ${{ secrets.xb688956 }}
+          remote_key: ${{ secrets.xb688956 }}
+          remote_port: 10022  # エックスサーバー専用のポート番号
+          legacy_allow_rsa_hostkeys: true # 接続エラーを防ぐための設定
