@@ -19,8 +19,8 @@ jobs:
           path: ./
           # 【重要】ここを自分のサーバー環境に合わせて書き換えてください
           remote_path: /home/xb688956/n-material.info/public_html/
-          remote_host: ${{ secrets.xb688956.xbiz.jp }}
-          remote_user: ${{ secrets.xb688956 }}
-          remote_key: ${{ secrets.XFORGIT }}
+          remote_host: ${{ secrets.XSERVER_HOST }}
+          remote_user: ${{ secrets.XSERVER_USER }}
+          remote_key: ${{ secrets.XSERVER_KEY }}
           remote_port: 10022  # エックスサーバー専用のポート番号
           legacy_allow_rsa_hostkeys: true # 接続エラーを防ぐための設定
