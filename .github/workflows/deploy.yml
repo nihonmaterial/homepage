@@ -21,6 +21,6 @@ jobs:
           remote_path: /home/xb688956/n-material.info/public_html/
           remote_host: ${{ secrets.xb688956.xbiz.jp }}
           remote_user: ${{ secrets.xb688956 }}
-          remote_key: ${{ secrets.xb688956 }}
+          remote_key: ${{ secrets.XFORGIT }}
           remote_port: 10022  # エックスサーバー専用のポート番号
           legacy_allow_rsa_hostkeys: true # 接続エラーを防ぐための設定
