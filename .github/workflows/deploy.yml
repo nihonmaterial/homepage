@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 # 最新のソースコードを取得
+        uses: actions/checkout@v5 # 最新のソースコードを取得
 
       - name: Deploy via rsync
         uses: Burnett01/rsync-deployments@7.0.0 # 差分だけを高速転送するアクション
