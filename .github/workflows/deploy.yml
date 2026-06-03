@@ -1,15 +1,29 @@
-name: Deploy via rsync
-uses: Burnett01/rsync-deployments@7.0.0
-with:
-  switches: >
-    -avzr
-    --delete
-    --exclude='.git'
-    --exclude='.github'
-  path: ./
-  remote_path: /home/xb688956/n-material.info/public_html/
-  remote_host: ${{ secrets.XSERVER_HOST }}
-  remote_user: ${{ secrets.XSERVER_USER }}
-  remote_key: ${{ secrets.XSERVER_KEY }}
-  remote_port: 10022
-  legacy_allow_rsa_hostkeys: true
+on:
+  push:
+    branches:
+      - main # mainブランチに保存（プッシュ）されたら自動実行
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4 # 最新のソースコードを取得
+
+      - name: Deploy via rsync
+        uses: Burnett01/rsync-deployments@7.0.0 # 差分だけを高速転送するアクション
+        with:
+          switches: >
+            -avzr
+            --delete
+            --exclude='.git'
+            --exclude='.github'
+            --exclude='.DS_Store'
+            --exclude='README.md'
+          path: ./
+          remote_path: /home/xb688956/n-material.info/public_html/
+          remote_host: ${{ secrets.XSERVER_HOST }}
+          remote_user: ${{ secrets.XSERVER_USER }}
+          remote_key: ${{ secrets.XSERVER_KEY }}
+          remote_port: 10022
+          legacy_allow_rsa_hostkeys: true
