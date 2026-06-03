@@ -15,7 +15,7 @@ jobs:
       - name: Deploy via rsync
         uses: Burnett01/rsync-deployments@7.0.0 # 差分だけを高速転送するアクション
         with:
-          switches: >
+          switches: >-
             -avzr
             --delete
             --exclude='.git'
