@@ -23,6 +23,7 @@ jobs:
           --exclude='.DS_Store'
           --exclude='README.md'
           --exclude='.gitignore'
+          --exclude='.htaccess'
         path: ./
         remote_path: /home/xb688956/n-material.info/public_html/test.n-material.info/
         remote_host: ${{ secrets.XSERVER_HOST }}
