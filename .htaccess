@@ -1,0 +1,7 @@
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_StaticMode
+
+# AccessControl IP/HOST
+order deny,allow
+deny from all
+allow from 130.62.99.196
